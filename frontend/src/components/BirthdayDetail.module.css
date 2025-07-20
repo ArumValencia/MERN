@@ -42,3 +42,12 @@
 .birthdayDetailContainer button:hover {
   background-color: #5a6268;
 }
+
+.detailPhoto {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #007bff;
+}

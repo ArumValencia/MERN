@@ -6,6 +6,7 @@ interface BirthdayData {
   name: string;
   dob: string;
   phone: string;
+  photo: string | null;
 }
 
 const calculateAge = (dob: string): number => {
@@ -84,6 +85,7 @@ const BirthdayDetail: React.FC = () => {
   return (
     <div className={styles.birthdayDetailContainer}>
       <h2>Birthday Details</h2>
+      {birthday.photo && <img src={birthday.photo} alt="Birthday Person" className={styles.detailPhoto} />}
       <p><strong>Name:</strong> {birthday.name}</p>
       <p><strong>Date of Birth:</strong> {birthday.dob}</p>
       <p><strong>Age:</strong> {calculateAge(birthday.dob)}</p>

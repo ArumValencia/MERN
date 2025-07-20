@@ -1,21 +1,28 @@
+:root {
+  padding: 0;
+  margin: 0;
+  background-color: #06334f;
+}
+
 .birthdayListContainer {
-  margin-top: 30px;
-  padding: 20px;
-  border: 1px solid #eee;
+  margin-top: 10px;
+  padding: 5px;
+  /* border: 1px solid #eee; */
   border-radius: 8px;
-  background-color: #4a4848;
+  background-color: #06334f;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  width: 430px;
-  /* margin-left: auto;
-  margin-right: auto; */
+  max-width: 900px;
+  min-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
   /* Center the content inside the container */
 }
 
 .birthdayListContainer h2 {
-  color: #007bff;
-  margin-bottom: 20px;
+  color: snow;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .birthdayListContainer ul {
@@ -24,26 +31,34 @@
 }
 
 .birthdayListContainer li {
-  background-color: #fff;
+  background: #2A7B9B;
+  background: linear-gradient(258deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 69%, rgba(237, 221, 83, 1) 100%);
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 10px;
+  padding: 2px;
+  margin-bottom: 5px;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
   justify-content: left;
   /* Center items horizontally within each list item */
   gap: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.birthdayListContainer p {
+  padding: 5px;
+  font-size: 1rem;
+  text-align: left;
+  width: 200px;
+}
+
 .birthdayListContainer li strong {
-  color: #555;
+  color: black;
 }
 
 .birthdayListContainer p {
-  color: #777;
+  color: white;
   font-style: italic;
   margin: 0;
 }
@@ -55,4 +70,11 @@
 
 .birthdayListItem:hover {
   background-color: #e9ecef;
+}
+
+.birthdayPhoto {
+  width: 80px;
+  height: 80px;
+  border-radius: 10%;
+  object-fit: cover;
 }

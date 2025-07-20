@@ -8,6 +8,7 @@ interface BirthdayData {
   name: string;
   dob: string;
   phone: string;
+  photo: string | null;
 }
 
 interface BirthdayListProps {
@@ -79,9 +80,14 @@ const BirthdayList: React.FC<BirthdayListProps> = ({ birthdays }) => {
         <ul>
           {birthdays.map((birthday, index) => (
             <li key={index} onClick={() => handleItemClick(index)} className={styles.birthdayListItem}>
-              <p><strong>Nombre:</strong> {birthday.name}</p>
-              <p><strong>Edad:</strong> {calculateAge(birthday.dob)}</p>
-              <p><strong>Dias restantes: </strong>{getDaysUntilNextBirthday(birthday.dob)}</p>
+              <div className='foto'>
+                {birthday.photo && <img src={birthday.photo} alt="Birthday Person" className={styles.birthdayPhoto} />}
+              </div>
+              <div className='info'>
+                <p><strong>Nombre:</strong> {birthday.name}</p>
+                <p><strong>Edad:</strong> {calculateAge(birthday.dob)}</p>
+                <p><strong>Cumpleaños en </strong>{getDaysUntilNextBirthday(birthday.dob)} <strong>dias</strong> </p>
+              </div>
               {/* <p><strong>Fecha Nacimiento:</strong> {birthday.dob}</p> */}
               {/* <p><strong>Signo:</strong> {getZodiacSign(birthday.dob)}</p>
               <p><strong>Telefono:</strong> {birthday.phone}</p> */}

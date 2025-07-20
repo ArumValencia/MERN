@@ -12,6 +12,7 @@ interface BirthdayData {
   name: string;
   dob: string;
   phone: string;
+  photo: string | null;
 }
 
 function App() {

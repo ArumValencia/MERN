@@ -5,6 +5,7 @@ interface BirthdayData {
   name: string;
   dob: string;
   phone: string;
+  photo: string | null;
 }
 
 interface BirthdayFormProps {
@@ -16,10 +17,22 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
     name: '',
     dob: '',
     phone: '',
+    photo: null,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, photo: reader.result as string });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -29,6 +42,7 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
       name: '',
       dob: '',
       phone: '',
+      photo: null,
     });
   };
 
@@ -65,6 +79,16 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
           value={formData.phone}
           onChange={handleChange}
           required
+        />
+      </div>
+      <div>
+        <label htmlFor="photo">Photo:</label>
+        <input
+          type="file"
+          id="photo"
+          name="photo"
+          accept="image/*"
+          onChange={handlePhotoChange}
         />
       </div>
       <button type="submit">Save Birthday</button>

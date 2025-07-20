@@ -1,0 +1,52 @@
+.birthdayForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+}
+
+.birthdayForm div {
+  display: flex;
+  flex-direction: column;
+}
+
+.birthdayForm label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.birthdayForm input[type="text"],
+.birthdayForm input[type="date"],
+.birthdayForm input[type="tel"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.birthdayForm input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.birthdayForm button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.birthdayForm button:hover {
+  background-color: #0056b3;
+}

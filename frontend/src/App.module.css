@@ -1,0 +1,31 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center horizontally */
+  justify-content: center;
+  /* Center vertically if needed, but usually for full height */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.appContainer h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.appContainer button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.appContainer button:hover {
+  background-color: #218838;
+}

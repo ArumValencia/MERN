@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styles from './BirthdayDetail.module.css';
 
 interface BirthdayData {
@@ -58,7 +59,11 @@ const getDaysUntilNextBirthday = (dob: string): number => {
   return diffDays;
 };
 
-const BirthdayDetail: React.FC = () => {
+interface BirthdayDetailProps {
+  onDelete: (id: number) => void;
+}
+
+const BirthdayDetail: React.FC<BirthdayDetailProps> = ({ onDelete }) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [birthday, setBirthday] = useState<BirthdayData | null>(null);
@@ -67,12 +72,10 @@ const BirthdayDetail: React.FC = () => {
     const storedBirthdays = localStorage.getItem('birthdays');
     if (storedBirthdays) {
       const birthdays: BirthdayData[] = JSON.parse(storedBirthdays);
-      // Assuming 'id' is the index of the birthday in the array for simplicity
       const foundBirthday = birthdays[parseInt(id || '', 10)];
       if (foundBirthday) {
         setBirthday(foundBirthday);
       } else {
-        // Handle case where birthday is not found, e.g., redirect to home
         navigate('/');
       }
     }
@@ -82,17 +85,29 @@ const BirthdayDetail: React.FC = () => {
     return <div>Loading or Birthday not found...</div>;
   }
 
+  const handleDelete = () => {
+    if (id) {
+      onDelete(parseInt(id, 10));
+      toast.error('Registro Eliminado');
+      navigate('/');
+    }
+  };
+
   return (
     <div className={styles.birthdayDetailContainer}>
-      <h2>Birthday Details</h2>
+      <h2>Detalles del cumpleañero</h2>
       {birthday.photo && <img src={birthday.photo} alt="Birthday Person" className={styles.detailPhoto} />}
-      <p><strong>Name:</strong> {birthday.name}</p>
-      <p><strong>Date of Birth:</strong> {birthday.dob}</p>
-      <p><strong>Age:</strong> {calculateAge(birthday.dob)}</p>
-      <p><strong>Zodiac Sign:</strong> {getZodiacSign(birthday.dob)}</p>
-      <p><strong>Days until next birthday:</strong> {getDaysUntilNextBirthday(birthday.dob)}</p>
-      <p><strong>Phone:</strong> {birthday.phone}</p>
-      <button onClick={() => navigate(-1)}>Go Back</button>
+      <p><strong>Nombre</strong> {birthday.name}</p>
+      <p><strong>F. Nacimiento</strong> {birthday.dob}</p>
+      <p><strong>Edad</strong> {calculateAge(birthday.dob)}</p>
+      <p><strong>Signo</strong> {getZodiacSign(birthday.dob)}</p>
+      <p><strong>Quedan</strong> {getDaysUntilNextBirthday(birthday.dob)} dias</p>
+      <p><strong>Telefono</strong> {birthday.phone}</p>
+      <div className='botones'>
+        <button onClick={() => navigate(-1)}>Volver</button>
+        <button onClick={handleDelete} className={styles.deleteButton}>Eliminar</button>
+      </div>
+
     </div>
   );
 };

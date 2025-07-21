@@ -11,7 +11,7 @@
 }
 
 .appContainer h1 {
-  color: #333;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -24,9 +24,15 @@
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  margin-bottom: 30px;
+  /* margin-bottom: 5px; */
 }
 
 .appContainer button:hover {
   background-color: #218838;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  font-size: 15px;
 }

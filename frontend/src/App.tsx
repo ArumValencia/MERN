@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import BirthdayForm from './components/BirthdayForm';
 import BirthdayList from './components/BirthdayList';
 import BirthdayDetail from './components/BirthdayDetail';
@@ -31,10 +33,17 @@ function App() {
     setBirthdays(updatedBirthdays);
     localStorage.setItem('birthdays', JSON.stringify(updatedBirthdays));
     setIsModalOpen(false); // Close modal after saving
+    toast.success('Nuevo registro agregado con Exito');
   };
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleDeleteBirthday = (indexToDelete: number) => {
+    const updatedBirthdays = birthdays.filter((_, index) => index !== indexToDelete);
+    setBirthdays(updatedBirthdays);
+    localStorage.setItem('birthdays', JSON.stringify(updatedBirthdays));
+  };
 
   return (
     <Router>
@@ -42,7 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <h1>Birthday App</h1>
+              <h1>Cumpleaños App</h1>
               <button onClick={openModal}>Añadir cumpleaños</button>
               <BirthdayList birthdays={birthdays} />
 
@@ -51,9 +60,19 @@ function App() {
               </Modal>
             </>
           } />
-          <Route path="/birthday/:id" element={<BirthdayDetail />} />
+          <Route path="/birthday/:id" element={<BirthdayDetail onDelete={handleDeleteBirthday} />} />
         </Routes>
       </div>
+      <footer>Free App created by ARUM</footer>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
     </Router>
   );
 }

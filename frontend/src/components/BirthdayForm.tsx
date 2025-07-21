@@ -49,7 +49,7 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.birthdayForm}>
       <div>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Nombre:</label>
         <input
           type="text"
           id="name"
@@ -60,7 +60,7 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
         />
       </div>
       <div>
-        <label htmlFor="dob">Date of Birth:</label>
+        <label htmlFor="dob">F. Nacimiento:</label>
         <input
           type="date"
           id="dob"
@@ -71,7 +71,7 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
         />
       </div>
       <div>
-        <label htmlFor="phone">Phone:</label>
+        <label htmlFor="phone">Telefono:</label>
         <input
           type="tel"
           id="phone"
@@ -82,7 +82,7 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
         />
       </div>
       <div>
-        <label htmlFor="photo">Photo:</label>
+        <label htmlFor="photo">Añade una Fotografia:</label>
         <input
           type="file"
           id="photo"
@@ -91,7 +91,7 @@ const BirthdayForm: React.FC<BirthdayFormProps> = ({ onSave }) => {
           onChange={handlePhotoChange}
         />
       </div>
-      <button type="submit">Save Birthday</button>
+      <button type="submit">Guardar</button>
     </form>
   );
 };

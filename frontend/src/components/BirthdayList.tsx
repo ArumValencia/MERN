@@ -73,9 +73,9 @@ const BirthdayList: React.FC<BirthdayListProps> = ({ birthdays }) => {
 
   return (
     <div className={styles.birthdayListContainer}>
-      <h2>Stored Birthdays</h2>
+      <h2>Tus Registros</h2>
       {birthdays.length === 0 ? (
-        <p>No birthdays stored yet.</p>
+        <h4>No hay registros</h4>
       ) : (
         <ul>
           {birthdays.map((birthday, index) => (

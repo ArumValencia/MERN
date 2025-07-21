@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  margin: 50px auto;
+  margin: 5px auto;
   max-width: 600px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -46,8 +46,27 @@
 .detailPhoto {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 10%;
   object-fit: cover;
   margin-bottom: 20px;
   border: 3px solid #007bff;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  /* Red color for delete */
+  margin-left: 10px;
+  /* Add some space between buttons */
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}
+
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
